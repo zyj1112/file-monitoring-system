@@ -54,7 +54,7 @@ if __name__ == "__main__" :
     try:
         while True:
             driver.refresh()
-            time.sleep(1) # 保持主线程运行 一秒一次监视
+            time.sleep(10) # 保持主线程运行 一秒一次监视
     except KeyboardInterrupt:
         observer.stop() # 线程结束前做一些工作
 
