@@ -1,5 +1,9 @@
 # 为大创项目chickenglass写的一个文件状态监视系统
 ***
+## 内容介绍
+watching.py是一个文件状态监视的程序，主要是把文件变化的日志打印出来
+watching_refreshing.py是一个文件状态监视（把文件变化的日志打印出来）+刷新浏览器的程序
+***
 ## 主要功能
 老师的[HackMD博客](https://hackmd.io/LoFPSapEQhWjBfCFVfytVQ)中对文件状态监视描述是：
 
