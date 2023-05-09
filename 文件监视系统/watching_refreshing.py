@@ -7,6 +7,8 @@ from selenium import  webdriver
 watchdog 提供了指定目录/文件的变化监控，对于指定目录内的操作，被视为一次事件。
 如添加删除文件或目录、重命名文件或目录、修改文件内容等，每种变化都会触发一次事件，事件是用户定义的业务逻辑代码。
 """
+driver = webdriver.Chrome() # Chrome浏览器驱动
+driver.get("file:///C:/Users/Lenovo/Desktop/chickenglass/output/project-config.html") # 我们要编辑的文件的URL
 class FileEventHandler(FileSystemEventHandler): # 继承一些库中的类
 
     def __init__(self):
@@ -39,22 +41,20 @@ class FileEventHandler(FileSystemEventHandler): # 继承一些库中的类
             print(f"{now} Directory  {event.src_path} was modified")
         else:
             print(f"{now} File  {event.src_path} was modified")
+            driver.refresh()
         return True
 
 if __name__ == "__main__" :
 
     observer = Observer()
-    path = "d://testt"
+    path = r"C:/Users/Lenovo/Desktop/chickenglass/output/project-config.html"
     event_handler = FileEventHandler()
     observer.schedule(event_handler, path, True)
     print(f"Start monitor directory {path}")
-    driver = webdriver.Chrome() # Chrome浏览器驱动
-    driver.get("file:///C:/Users/Lenovo/Desktop/chickenglass/output/example.html")
     observer.start() # 创建一个新线程
     try:
         while True:
-            driver.refresh()
-            time.sleep(10) # 保持主线程运行 一秒一次监视
+            time.sleep(1) # 保持主线程运行 一秒一次监视
     except KeyboardInterrupt:
         observer.stop() # 线程结束前做一些工作
 
